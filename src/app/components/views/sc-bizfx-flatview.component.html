@@ -16,38 +16,7 @@
       <tbody>
         <tr>
           <td *ngFor="let property of (view.Properties | isNotHidden)">
-            <div [ngSwitch]="property.OriginalType">
-              <div id="property-{{view.Name}}-{{property.Name}}" *ngSwitchCase="'System.DateTimeOffset'" class="property">
-                  <div *ngIf="property.UiType === 'FullDateTime'">
-                      {{property.Value | scDate:'short':'':bizFxContext.language}}
-                  </div>
-                  <div *ngIf="property.UiType !== 'FullDateTime'">
-                      {{property.Value | scDate:'shortDate':'':bizFxContext.language}}
-                  </div>
-              </div>
-
-              <div id="property-{{view.Name}}-{{property.Name}}" *ngSwitchCase="'System.Decimal'" class="property">
-                {{property.Value | scNumber:'':bizFxContext.language}}
-              </div>
-
-              <div id="property-{{view.Name}}-{{property.Name}}" *ngSwitchCase="'Sitecore.Commerce.Core.Money'" class="property">
-                {{property.Value | scCurrency:'code':'':bizFxContext.language}}
-              </div>
-
-              <div id="property-{{view.Name}}-{{property.Name}}" *ngSwitchCase="'Html'" class="property">
-                <div [innerHTML]="property.Value"></div>
-              </div>
-
-              <div id="property-{{view.Name}}-{{property.Name}}" *ngSwitchCase="'List'" class="property">
-                <div *ngFor="let item of getList(property)">
-                  {{item}}
-                </div>
-              </div>
-
-              <div id="property-{{view.Name}}-{{property.Name}}" *ngSwitchDefault class="property">
-                {{property.Value}}
-              </div>
-            </div>
+              <sc-bizfx-viewproperty-byui [property]="property" [view]="view" [hideHeader]="true"></sc-bizfx-viewproperty-byui>
           </td>
         </tr>
       </tbody>
