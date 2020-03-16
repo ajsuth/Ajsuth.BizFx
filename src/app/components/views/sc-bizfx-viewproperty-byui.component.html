@@ -1,19 +1,19 @@
 <div [ngSwitch]="property.UiType">
 
   <div *ngSwitchCase="'EntityLink'">
-    <a routerLink="/entityView/Master/{{view.EntityVersion}}/{{view.ItemId}}" routerLinkActive="active">
+    <a routerLink="/entityView/Master/{{view.EntityVersion}}/{{view.ItemId}}" routerLinkActive="active" [target]="hasTarget() ? getTarget() : null">
       <sc-bizfx-viewproperty-bytype [property]="property" [view]="view" [hideHeader]="hideHeader"></sc-bizfx-viewproperty-bytype>
     </a>
   </div>
 
   <div *ngSwitchCase="'ItemLink'">
-    <a routerLink="/entityView/{{view.Name}}/{{view.EntityVersion}}/{{view.EntityId}}/{{view.ItemId}}" routerLinkActive="active">
+    <a routerLink="/entityView/{{view.Name}}/{{view.EntityVersion}}/{{view.EntityId}}/{{view.ItemId}}" routerLinkActive="active" [target]="hasTarget() ? getTarget() : null">
       <sc-bizfx-viewproperty-bytype [property]="property" [view]="view" [hideHeader]="hideHeader"></sc-bizfx-viewproperty-bytype>
     </a>
   </div>
 
   <div *ngSwitchCase="'SubItemLink'">
-    <a routerLink="/entityView/{{view.Name}}/{{view.EntityVersion}}/{{buildSubItemLink()}}" routerLinkActive="active">
+    <a routerLink="/entityView/{{view.Name}}/{{view.EntityVersion}}/{{buildSubItemLink()}}" routerLinkActive="active" [target]="hasTarget() ? getTarget() : null">
       <sc-bizfx-viewproperty-bytype [property]="property" [view]="view" [hideHeader]="hideHeader"></sc-bizfx-viewproperty-bytype>
     </a>
   </div>

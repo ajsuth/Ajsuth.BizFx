@@ -47,4 +47,15 @@ export class ScBizFxViewPropertyByTypeComponent implements OnInit {
       this.list = JSON.parse(this.property.Value);
     }
   }
+  
+  /**
+    * @ignore
+    */
+   isBlankTarget(): boolean {
+    let viewPolicy = this.property.Policies.find(p => p.PolicyId === 'Target');
+    return viewPolicy !== undefined
+      && viewPolicy !== null
+      && viewPolicy.Models[0] !== undefined
+      && viewPolicy.Models[0].Name === '_blank';
+  }
 }

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 
-import { ScBizFxProperty, ScBizFxView } from '@sitecore/bizfx';
+import { ScBizFxProperty, ScBizFxView, ScBizFxPolicy } from '@sitecore/bizfx';
 
 /**
  * BizFx View Property By UiType `Component`
@@ -62,5 +62,33 @@ export class ScBizFxViewPropertyByUiComponent implements OnInit {
 
     // Use regular item link format as a fallback
     return `${this.view.EntityId}/${this.view.ItemId}`;
+  }
+
+  /**
+    * @ignore
+    */
+  getTargetPolicy(): ScBizFxPolicy {
+    return this.property.Policies.find(p => p.PolicyId === 'Target');
+  }
+
+  /**
+    * @ignore
+    */
+  hasTarget(): boolean {
+    let viewPolicy = this.getTargetPolicy();
+    return viewPolicy !== undefined && viewPolicy !== null;
+  }
+
+  /**
+    * @ignore
+    */
+  getTarget(): string {
+    let viewPolicy = this.getTargetPolicy();
+    if (viewPolicy !== undefined && viewPolicy !== null && viewPolicy.Models[0] !== undefined) {
+      return viewPolicy.Models[0].Name;
+    }
+      else {
+      return '';
+    }
   }
 }

@@ -31,6 +31,6 @@
   </div>
 
   <div id="property-{{view.Name}}-{{property.Name}}" *ngSwitchDefault class="property">
-    {{property.Value}}
+    {{property.Value}}{{isBlankTarget() ? ' ^' : ''}}
   </div>
 </div>
