@@ -16,6 +16,23 @@ Custom Sitecore Commerce BizFx project with extended functionality for the Busin
 ### UI Types Enabled in Flat Entity Views
 For entity views of UI Hint type _'Flat'_, the view properties' UI Types are now resolved and rendered accordingly.
 
+This includes the following UI Types:
+- Entity Link
+- Item Link
+- Sub Item Link
+- Html
+- Multiline (doesn't format new lines, technically renders as per default string data type)
+- List
+- Download CSV
+- String By Data Type (OriginalType)
+  - DateTimeOffset
+    - FullDateTime UI Type will render the time as well
+  - Decimal
+  - Sitecore.Commerce.Core.Money
+  - Html
+  - List
+  - String (default)
+
 ![UI Types rendered in a sample flat entity view](./images/ui-types-in-flat-entity-view.png)
 
 _Sample 'Flat' entity view with various UI Types._
