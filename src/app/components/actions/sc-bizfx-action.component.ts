@@ -2,6 +2,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/takeWhile';
 import { Component, OnInit, Inject, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormArray, FormGroup, FormControl, FormBuilder, AbstractControl } from '@angular/forms';
+import {Router} from '@angular/router';
 
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
@@ -62,6 +63,7 @@ export class ScBizFxActionComponent implements OnInit, OnDestroy {
     public bizFxContext: ScBizFxContextService,
     private viewsService: ScBizFxViewsService,
     private dialogService: ScDialogService,
+    private router: Router,
     private fb: FormBuilder) {
     this.actionForm = new FormGroup({});
   }
@@ -149,8 +151,20 @@ export class ScBizFxActionComponent implements OnInit, OnDestroy {
             this.submitAction();
           }
         } else if (actionResult.ResponseCode === 'Ok') {
-          this.submitted.emit();
           this.dialogService.close();
+
+          const redirectPolicy = this.view.Policies.find(p => p.PolicyId === 'RedirectPolicy');
+          if (redirectPolicy) {
+            const persistedEntity = actionResult.Models.find(model => model['@odata.type'] === '#Sitecore.Commerce.Core.PersistedEntityModel');
+            const entityId = persistedEntity && persistedEntity['EntityFriendlyId'] ? persistedEntity['EntityId'] : '';
+
+            if (entityId) {
+              this.router.navigateByUrl('/entityView/Master/1/' + entityId);
+            }
+          }
+          else {
+            this.submitted.emit();
+          }
         }
       });
   }
