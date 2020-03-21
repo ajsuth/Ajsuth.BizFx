@@ -14,7 +14,7 @@ Custom Sitecore Commerce BizFx project with extended functionality for the Busin
 - [Custom Entity Links and Custom Item Links](#custom-entity-links-and-custom-item-links)
 - [UI Types Enabled in Flat Entity Views](#ui-types-enabled-in-flat-entity-views)
 - [Target Attribute Support for Hyperlink Values](#target-attribute-support-for-hyperlink-values)
-- [Redirect On Entity Creation](#redirect-on-entity-creation)
+- [Automatic Page Redirect On Entity and Component Creation](#automatic-page-redirect-on-entity-and-component-creation)
 
 ### Custom Entity Links and Custom Item Links
 Custom entity and item links are more flexible than the standard entity and item links as they allow the configurations to be specified at the view property level with a fallback to the entity view values where values have not been specified. This allows entity views to contain multiple links under a single entity view that resolve to different routes.
@@ -106,8 +106,21 @@ entityLinkViewProperty.SetTargetPolicy();
 itemLinkViewProperty.SetTargetPolicy(ViewsConstants.ViewProperty.Targets.Self);
 ```
 
-### Redirect On Entity Creation
-When entities are created via BizFx, the user is automatically redirected to the newly created entity page view. 
+### Automatic Page Redirect On Entity and Component Creation
+When entities and components are created via BizFx, the user is automatically redirected to the entity view page for the newly create entity or component.
+
+Supported Entities:
+- Catalog
+- Category
+- Sellable Item
+- Inventory Set
+- Price Book
+- Price Card
+- Promotion Book
+- Promotion
+
+Supported Components:
+- Price Snapshot
 
 **Dependencies:** https://github.com/ajsuth/Ajsuth.Foundation.Views.Engine/tree/release/9.2/master
 

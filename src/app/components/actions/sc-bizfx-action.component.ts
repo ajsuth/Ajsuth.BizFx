@@ -153,18 +153,34 @@ export class ScBizFxActionComponent implements OnInit, OnDestroy {
         } else if (actionResult.ResponseCode === 'Ok') {
           this.dialogService.close();
 
-          const redirectPolicy = this.view.Policies.find(p => p.PolicyId === 'RedirectPolicy');
-          if (redirectPolicy) {
+          const redirectEntityPolicy = this.view.Policies.find(p => p.PolicyId === 'RedirectEntityPolicy');
+          if (redirectEntityPolicy) {
             const persistedEntity = actionResult.Models.find(model => model['@odata.type'] === '#Sitecore.Commerce.Core.PersistedEntityModel');
             const entityId = persistedEntity && persistedEntity['EntityFriendlyId'] ? persistedEntity['EntityId'] : '';
 
             if (entityId) {
               this.router.navigateByUrl('/entityView/Master/1/' + entityId);
             }
+
+            return;
           }
-          else {
-            this.submitted.emit();
+          
+          const redirectSnapshotPolicy = this.view.Policies.find(p => p.PolicyId === 'RedirectSnapshotPolicy');
+          if (redirectSnapshotPolicy) {
+            const persistedEntity = actionResult.Models.find(model => model['@odata.type'] === '#Sitecore.Commerce.Core.PersistedEntityModel');
+            const entityId = persistedEntity && persistedEntity['EntityFriendlyId'] ? persistedEntity['EntityId'] : '';
+
+            const snapshot = actionResult.Models.find(model => model['@odata.type'] === '#Sitecore.Commerce.Plugin.Pricing.PriceSnapshotAdded');
+            const snapshotId = snapshot && snapshot['PriceSnapshotId'] ? snapshot['PriceSnapshotId'] : '';
+
+            if (entityId && snapshotId) {
+              this.router.navigateByUrl(`/entityView/PriceSnapshotDetails/1/${entityId}/${snapshotId}`);
+            }
+
+            return;
           }
+          
+          this.submitted.emit();
         }
       });
   }
