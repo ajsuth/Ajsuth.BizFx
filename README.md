@@ -121,6 +121,7 @@ Supported Entities:
 
 Supported Components:
 - Price Snapshot
+- Variant
 
 **Dependencies:** https://github.com/ajsuth/Ajsuth.Foundation.Views.Engine/tree/release/9.2/master
 

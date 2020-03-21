@@ -180,6 +180,22 @@ export class ScBizFxActionComponent implements OnInit, OnDestroy {
             return;
           }
           
+          const redirectVariantPolicy = this.view.Policies.find(p => p.PolicyId === 'RedirectVariantPolicy');
+          if (redirectVariantPolicy) {
+            const persistedEntity = actionResult.Models.find(model => model['@odata.type'] === '#Sitecore.Commerce.Core.PersistedEntityModel');
+            const entityId = persistedEntity && persistedEntity['EntityFriendlyId'] ? persistedEntity['EntityId'] : '';
+            const entityVersion = persistedEntity && persistedEntity['EntityVersion'] ? persistedEntity['EntityVersion'] : '';
+
+            const variant = actionResult.Models.find(model => model['@odata.type'] === '#Ajsuth.Foundation.Views.Engine.Models.VariantAdded');
+            const variantId = variant && variant['VariantId'] ? variant['VariantId'] : '';
+
+            if (entityId && variantId) {
+              this.router.navigateByUrl(`/entityView/Variant/${entityVersion}/${entityId}/${variantId}`);
+            }
+
+            return;
+          }
+          
           this.submitted.emit();
         }
       });
