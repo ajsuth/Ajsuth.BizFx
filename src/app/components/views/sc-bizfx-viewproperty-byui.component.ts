@@ -67,27 +67,71 @@ export class ScBizFxViewPropertyByUiComponent implements OnInit {
   /**
     * @ignore
     */
-  getTargetPolicy(): ScBizFxPolicy {
-    return this.property.Policies.find(p => p.PolicyId === 'Target');
+   buildCustomEntityLink(): string {
+    let entityVersionPolicy = this.property.Policies.find(p => p.PolicyId === 'EntityVersion');
+    let entityVersion = entityVersionPolicy && entityVersionPolicy.Models[0] ? entityVersionPolicy.Models[0].Name : '';
+    if (entityVersion === '') {
+      entityVersion = this.view.EntityVersion.toString();
+    }
+
+    let entityIdPolicy = this.property.Policies.find(p => p.PolicyId === 'EntityId');
+    let entityId = entityIdPolicy && entityIdPolicy.Models[0] ? entityIdPolicy.Models[0].Name : '';
+    if (entityId === '') {
+      entityId = this.view.EntityId;
+    }
+
+    return `/entityView/Master/${entityVersion}/${entityId}`;
+  }
+  
+  /**
+    * @ignore
+    */
+  buildCustomItemLink(): string {
+    let viewPolicy = this.property.Policies.find(p => p.PolicyId === 'ViewName');
+    let viewName = viewPolicy && viewPolicy.Models[0] ? viewPolicy.Models[0].Name : '';
+    if (viewName === '') {
+      viewName = this.view.Name;
+    }
+
+    let entityVersionPolicy = this.property.Policies.find(p => p.PolicyId === 'EntityVersion');
+    let entityVersion = entityVersionPolicy && entityVersionPolicy.Models[0] ? entityVersionPolicy.Models[0].Name : '';
+    if (entityVersion === '') {
+      entityVersion = this.view.EntityVersion.toString();
+    }
+
+    let itemIdPolicy = this.property.Policies.find(p => p.PolicyId === 'ItemId');
+    let itemId = itemIdPolicy && itemIdPolicy.Models[0] ? itemIdPolicy.Models[0].Name.split('|').join('/') : '';
+    if (itemId === '') {
+      itemId = `${this.view.EntityId}/${this.view.ItemId}`;
+    }
+
+	  return `/entityView/${viewName}/${entityVersion}/${itemId}`;
+  }
+  
+  /**
+    * @ignore
+    */
+   getTargetPolicy(): ScBizFxPolicy {
+	  return this.property.Policies.find(p => p.PolicyId === 'Target');
   }
 
   /**
     * @ignore
     */
-  hasTarget(): boolean {
+   hasTarget(): boolean {
     let viewPolicy = this.getTargetPolicy();
-    return viewPolicy !== undefined && viewPolicy !== null;
+	  return viewPolicy !== undefined && viewPolicy !== null;
   }
 
   /**
     * @ignore
     */
-  getTarget(): string {
+   getTarget(): string {
     let viewPolicy = this.getTargetPolicy();
     if (viewPolicy !== undefined && viewPolicy !== null && viewPolicy.Models[0] !== undefined) {
       return viewPolicy.Models[0].Name;
     }
-      else {
+	  else {
       return '';
     }
   }

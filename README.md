@@ -11,13 +11,59 @@ Custom Sitecore Commerce BizFx project with extended functionality for the Busin
 - XC 9.2
 
 ## Features
+- [Custom Entity Links and Custom Item Links](#custom-entity-links-and-custom-item-links)
 - [UI Types Enabled in Flat Entity Views](#ui-types-enabled-in-flat-entity-views)
 - [Target Attribute Support for Hyperlink Values](#target-attribute-support-for-hyperlink-values)
+
+### Custom Entity Links and Custom Item Links
+Custom entity and item links are more flexible than the standard entity and item links as they allow the configurations to be specified at the view property level with a fallback to the entity view values where values have not been specified. This allows entity views to contain multiple links under a single entity view that resolve to different routes.
+
+**Dependencies:** https://github.com/ajsuth/Ajsuth.Foundation.Views.Engine/tree/release/9.2/master
+
+#### Custom Entity Link
+
+The custom entity link will render _\<domain\>/entityView/Master/\<entity version\>/\<entity id\>_ 
+
+e.g. _https://bizfx.local/entityView/Master/2/Entity-SellableItem-12345_
+
+```
+var customEntityLink = new ViewProperty
+{
+    Name = "Custom Entity Link",
+    Value = "Custom Entity Link"
+};
+customEntityLink.SetCustomEntityLink(2, "Entity-SellableItem-12345");
+entityView.Properties.Add(customEntityLink);
+```
+
+_Sample Custom Entity Link Usage._
+
+#### Custom Item Link
+
+The custom item link will render _\<domain\>/entityView/\<view name\>/\<entity version\>/\<entity id\>/\<item id\>_ 
+
+e.g. _https://bizfx.local/entityView/MyView/3/Entity-SellableItem-12345/67890_
+
+```
+var customItemLink = new ViewProperty
+{
+    Name = "Custom Item Link",
+    Value = "Custom Item Link"
+};
+customItemLink.SetCustomItemLink("MyView", 3, "Entity-SellableItem-12345", "67890");
+// OR
+// customItemLink.SetCustomItemLink("MyView", 3, "Entity-SellableItem-12345|67890");
+entityView.Properties.Add(customItemLink);
+```
+
+_Sample Custom Item Link Usage._
 
 ### UI Types Enabled in Flat Entity Views
 For entity views of UI Hint type _'Flat'_, the view properties' UI Types are now resolved and rendered accordingly.
 
 This includes the following UI Types:
+- Custom Entity Link (See [Custom Entity Links and Custom Item Links](#custom-entity-links-and-custom-item-links) for more details)
+- Custom Item Link (See [Custom Entity Links and Custom Item Links](#custom-entity-links-and-custom-item-links) for more details)
 - Entity Link
 - Item Link
 - Sub Item Link
@@ -37,9 +83,6 @@ This includes the following UI Types:
 ![UI Types rendered in a sample flat entity view](./images/ui-types-in-flat-entity-view.png)
 
 _Sample 'Flat' entity view with various UI Types._
-
-**Source:**
-- src\app\components\views\sc-bizfx-flatview.component.html
 
 ### Target Attribute Support for Hyperlink Values
 Links in BizFx may direct the user away from the current page, counter-intuitive to the flow of user navigation. Enabling the target attribute to be configured for links, specifically for opening links in a new window or tab via the '_blank' value, improves the UX of customisations to the Business Tools.
@@ -62,16 +105,10 @@ entityLinkViewProperty.SetTargetPolicy();
 itemLinkViewProperty.SetTargetPolicy(ViewsConstants.ViewProperty.Targets.Self);
 ```
 
-**Source:**
-- src\app\components\views\sc-bizfx-viewproperty-bytype.component.html
-- src\app\components\views\sc-bizfx-viewproperty-bytype.component.ts
-- src\app\components\views\sc-bizfx-viewproperty-byui.component.html
-- src\app\components\views\sc-bizfx-viewproperty-byui.component.ts
-
 ## Installation Instructions
 1. Download the repository.
 2. Diff the change between the repository's _src_ folder and your BizFx development solution, ensuring changes don't conflict with any changes introduced by you and your team.
-3. Copy the _src_ folder into the BizFx solution (not the deployed website folder). Alternatively, copy only the files listed for a specific feature to only introduce a subset of features to your solution.
+3. Copy the _src_ folder into the BizFx solution (not the deployed website folder).
 4. Build and deploy the BizFx solution as per your preferred approach.
 
 ## Known Issues

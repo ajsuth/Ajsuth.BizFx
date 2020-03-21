@@ -1,4 +1,16 @@
 <div [ngSwitch]="property.UiType">
+  
+  <div *ngSwitchCase="'CustomEntityLink'">
+    <a routerLink="{{buildCustomEntityLink()}}" routerLinkActive="active" [target]="hasTarget() ? getTarget() : null">
+      <sc-bizfx-viewproperty-bytype [property]="property" [view]="view" [hideHeader]="hideHeader"></sc-bizfx-viewproperty-bytype>
+    </a>
+  </div>
+
+  <div *ngSwitchCase="'CustomItemLink'">
+    <a routerLink="{{buildCustomItemLink()}}" routerLinkActive="active" [target]="hasTarget() ? getTarget() : null">
+      <sc-bizfx-viewproperty-bytype [property]="property" [view]="view" [hideHeader]="hideHeader"></sc-bizfx-viewproperty-bytype>
+    </a>
+  </div>
 
   <div *ngSwitchCase="'EntityLink'">
     <a routerLink="/entityView/Master/{{view.EntityVersion}}/{{view.ItemId}}" routerLinkActive="active" [target]="hasTarget() ? getTarget() : null">
