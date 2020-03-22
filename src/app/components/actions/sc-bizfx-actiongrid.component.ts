@@ -110,4 +110,12 @@ export class ScBizFxActionGridComponent implements OnInit {
         this.children.splice(index, 1);
         this.grid.removeAt(index);
     }
+    
+  /**
+    * @ignore
+    */
+  isRequired(property: ScBizFxProperty): boolean {
+    return property.IsRequired;
+  }
+
 }

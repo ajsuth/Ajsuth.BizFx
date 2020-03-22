@@ -88,4 +88,13 @@ export class ScBizFxActionPropertyComponent implements AfterViewInit {
       }
     }
   }
+
+  
+  /**
+    * @ignore
+    */
+  isRequired(): boolean {
+     return this.property.IsRequired;
+  }
+
 }

@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th *ngFor="let header of headers">
-            <div class="property-header" id="grid-header-{{header.Name}}">{{header.DisplayName}}</div>
+            <div class="property-header" id="grid-header-{{header.Name}}">{{header.DisplayName}}{{isRequired(header) ? ' *' : ''}}</div>
           </th>
         </tr>
       </thead>

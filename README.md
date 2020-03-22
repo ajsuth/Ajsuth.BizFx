@@ -15,6 +15,7 @@ Custom Sitecore Commerce BizFx project with extended functionality for the Busin
 - [UI Types Enabled in Flat Entity Views](#ui-types-enabled-in-flat-entity-views)
 - [Target Attribute Support for Hyperlink Values](#target-attribute-support-for-hyperlink-values)
 - [Automatic Page Redirect On Entity and Component Creation](#automatic-page-redirect-on-entity-and-component-creation)
+- [Required Field Indicators For Data Entry Modals](#required-field-indicators-for-data-entry-modals)
 
 ### Custom Entity Links and Custom Item Links
 Custom entity and item links are more flexible than the standard entity and item links as they allow the configurations to be specified at the view property level with a fallback to the entity view values where values have not been specified. This allows entity views to contain multiple links under a single entity view that resolve to different routes.
@@ -124,6 +125,30 @@ Supported Components:
 - Variant
 
 **Dependencies:** https://github.com/ajsuth/Ajsuth.Foundation.Views.Engine/tree/release/9.2/master
+
+### Required Field Indicators For Data Entry Modals
+Improved UX for required fields, rendering a '*' after the field title for required view properties. Applies to modal entity views of UI Hint _Flat_ and _Grid_.
+
+_Flat_ Entity View Supported Ui Types
+- Autocomplete
+- SelectList
+- Multiline
+- String By Data Type
+  - String
+  - Decimal
+
+![Required field indicator samples in flat entity view](./images/required-field-indicator-flat.png)
+
+_Sample 'Flat' entity view with required field indicators for supported types._
+
+_Grid_ Entity View Supported Ui Types
+- SelectList
+- String By Data Type
+  - String
+
+![Required field indicator samples in grid entity view](./images/required-field-indicator-grid.png)
+
+_Sample 'Grid' entity view with required field indicators for supported types._
 
 ## Installation Instructions
 1. Download the repository.
