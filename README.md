@@ -156,7 +156,7 @@ Improved UX for form input fields, rendering description tooltips on mouse hover
 
 **Dependencies:** https://github.com/ajsuth/Ajsuth.Foundation.Views.Engine/tree/release/9.2/master
 
-![Description tooltip](./images/description-tooltip.png)
+![Description tooltip](./images/view-property-description-tooltip.png)
 
 _Sample description tooltip in modal view._
 
