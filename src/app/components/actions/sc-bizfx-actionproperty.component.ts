@@ -89,12 +89,32 @@ export class ScBizFxActionPropertyComponent implements AfterViewInit {
     }
   }
 
-  
   /**
     * @ignore
     */
-  isRequired(): boolean {
-     return this.property.IsRequired;
+   isRequired(): boolean {
+	  return this.property.IsRequired;
+  }
+
+  /**
+    * @ignore
+    */
+   hasDescription(): boolean {
+    let viewPolicy = this.property.Policies.find(p => p.PolicyId === 'Description');
+    let hasDescription = viewPolicy && viewPolicy.Models.length === 1 && viewPolicy.Models[0].Name !== '';
+    return hasDescription;
+  }
+
+  /**
+    * @ignore
+    */
+   getDescription(): string {
+    let viewPolicy = this.property.Policies.find(p => p.PolicyId === 'Description');
+    if (!viewPolicy || viewPolicy.Models.length !== 1) {
+      return '';
+    }
+
+    return viewPolicy.Models[0].Name;
   }
 
 }

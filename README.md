@@ -16,6 +16,7 @@ Custom Sitecore Commerce BizFx project with extended functionality for the Busin
 - [Target Attribute Support for Hyperlink Values](#target-attribute-support-for-hyperlink-values)
 - [Automatic Page Redirect On Entity and Component Creation](#automatic-page-redirect-on-entity-and-component-creation)
 - [Required Field Indicators For Data Entry Modals](#required-field-indicators-for-data-entry-modals)
+- [Description Tooltip for View Properties](#description-tooltip-for-view-properties)
 
 ### Custom Entity Links and Custom Item Links
 Custom entity and item links are more flexible than the standard entity and item links as they allow the configurations to be specified at the view property level with a fallback to the entity view values where values have not been specified. This allows entity views to contain multiple links under a single entity view that resolve to different routes.
@@ -149,6 +150,15 @@ _Grid_ Entity View Supported Ui Types
 ![Required field indicator samples in grid entity view](./images/required-field-indicator-grid.png)
 
 _Sample 'Grid' entity view with required field indicators for supported types._
+
+### Description Tooltip for View Properties
+Improved UX for form input fields, rendering description tooltips on mouse hover to provide context and facilitate data entry for business users.
+
+**Dependencies:** https://github.com/ajsuth/Ajsuth.Foundation.Views.Engine/tree/release/9.2/master
+
+![Description tooltip](./images/description-tooltip.png)
+
+_Sample description tooltip in modal view._
 
 ## Installation Instructions
 1. Download the repository.
