@@ -74,10 +74,13 @@ import localeJa from '../locales/ja';
 import localeJaExtra from '../locales/extra/ja';
 import localeDe from '../locales/de';
 import localeDeExtra from '../locales/extra/de';
+import localeEnAu from '../locales/en-AU';
+import localeEnAuExtra from '../locales/extra/en-AU';
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 registerLocaleData(localeDe, 'de-DE', localeDeExtra);
 registerLocaleData(localeJa, 'Ja-JP', localeJaExtra);
+registerLocaleData(localeEnAu, 'en-AU', localeEnAuExtra);
 
 /**
  * BizFxLib `Module`.

@@ -17,6 +17,7 @@ Custom Sitecore Commerce BizFx project with extended functionality for the Busin
 - [Automatic Page Redirect On Entity and Component Creation](#automatic-page-redirect-on-entity-and-component-creation)
 - [Required Field Indicators For Data Entry Modals](#required-field-indicators-for-data-entry-modals)
 - [Description Tooltip for View Properties](#description-tooltip-for-view-properties)
+- [Support for en-AU Locale](#support-for-en-au-locale)
 
 ### Custom Entity Links and Custom Item Links
 Custom entity and item links are more flexible than the standard entity and item links as they allow the configurations to be specified at the view property level with a fallback to the entity view values where values have not been specified. This allows entity views to contain multiple links under a single entity view that resolve to different routes.
@@ -159,6 +160,17 @@ Improved UX for form input fields, rendering description tooltips on mouse hover
 ![Description tooltip](./images/view-property-description-tooltip.png)
 
 _Sample description tooltip in modal view._
+
+### Support for en-AU Locale
+The en-AU locale has been included as part of the default set of applicable locales and can be configured by setting the **Language** configuration in _\src\assets\config.json_ to _'en-AU'_. The most notable areas where the locale is obvious in the BizFx tooling is the date/time formatting.
+
+![En US date format](./images/date-format-locale-en-us.png)
+
+_The date format display for the default 'en' date locale._
+
+![En US date format](./images/date-format-locale-en-au.png)
+
+_The date format display when locale is set to 'en-AU'._
 
 ## Installation Instructions
 1. Download the repository.
