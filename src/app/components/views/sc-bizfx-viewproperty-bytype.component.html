@@ -5,19 +5,19 @@
 <div [ngSwitch]="property.OriginalType">
   <div id="property-{{view.Name}}-{{property.Name}}" *ngSwitchCase="'System.DateTimeOffset'" class="property">
     <div *ngIf="property.UiType === 'FullDateTime'">
-        {{property.Value | scDate:'short':'':bizFxContext.language}}
+        {{property.Value | date:'short':'':bizFxContext.language}}
     </div>
     <div *ngIf="property.UiType !== 'FullDateTime'">
-        {{property.Value | scDate:'shortDate':'':bizFxContext.language}}
+        {{property.Value | date:'shortDate':'':bizFxContext.language}}
     </div>
   </div>
 
   <div id="property-{{view.Name}}-{{property.Name}}" *ngSwitchCase="'System.Decimal'" class="property">
-    {{property.Value | scNumber:'':bizFxContext.language}}
+    {{property.Value | number:'':bizFxContext.language}}
   </div>
 
   <div id="property-{{view.Name}}-{{property.Name}}" *ngSwitchCase="'Sitecore.Commerce.Core.Money'" class="property">
-    {{property.Value | scCurrency:'code':'':bizFxContext.language}}
+    {{property.Value | scCurrency:'code':'1.2-2':bizFxContext.language}}
   </div>
 
   <div id="property-{{view.Name}}-{{property.Name}}" *ngSwitchCase="'Html'" class="property">

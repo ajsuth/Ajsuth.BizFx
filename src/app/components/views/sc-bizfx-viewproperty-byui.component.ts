@@ -43,7 +43,7 @@ export class ScBizFxViewPropertyByUiComponent implements OnInit {
   }
 
   /**
-     * Calls `Angular2Csv` to generate and donwload a csv file
+     * Calls `Angular2Csv` to generate and download a csv file
      */
   downloadCsv() {
     return new Angular2Csv(JSON.parse(this.property.Value), `${this.property.Name}`);
@@ -67,7 +67,7 @@ export class ScBizFxViewPropertyByUiComponent implements OnInit {
   /**
     * @ignore
     */
-   buildCustomEntityLink(): string {
+  buildCustomEntityLink(): string {
     let entityVersionPolicy = this.property.Policies.find(p => p.PolicyId === 'EntityVersion');
     let entityVersion = entityVersionPolicy && entityVersionPolicy.Models[0] ? entityVersionPolicy.Models[0].Name : '';
     if (entityVersion === '') {
@@ -111,14 +111,14 @@ export class ScBizFxViewPropertyByUiComponent implements OnInit {
   /**
     * @ignore
     */
-   getTargetPolicy(): ScBizFxPolicy {
+  getTargetPolicy(): ScBizFxPolicy {
 	  return this.property.Policies.find(p => p.PolicyId === 'Target');
   }
 
   /**
     * @ignore
     */
-   hasTarget(): boolean {
+  hasTarget(): boolean {
     let viewPolicy = this.getTargetPolicy();
 	  return viewPolicy !== undefined && viewPolicy !== null;
   }
@@ -126,7 +126,7 @@ export class ScBizFxViewPropertyByUiComponent implements OnInit {
   /**
     * @ignore
     */
-   getTarget(): string {
+  getTarget(): string {
     let viewPolicy = this.getTargetPolicy();
     if (viewPolicy !== undefined && viewPolicy !== null && viewPolicy.Models[0] !== undefined) {
       return viewPolicy.Models[0].Name;

@@ -1,10 +1,8 @@
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/takeWhile';
-import { Component, OnInit, Inject, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { FormArray, FormGroup, FormControl, FormBuilder, AbstractControl } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { FormArray, FormGroup, FormControl, AbstractControl } from '@angular/forms';
 import {Router} from '@angular/router';
-
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 import { ScDialogService } from '@speak/ng-bcl/dialog';
 
@@ -12,13 +10,16 @@ import { ScBizFxContextService, ScBizFxViewsService, getLocaleNumberSymbol, Numb
 import { ScBizFxView, ScBizFxProperty, ScBizFxAction, ScBizFxActionMessage } from '@sitecore/bizfx';
 import { getPropertyValidators } from '@sitecore/bizfx';
 
+import { takeWhile } from 'rxjs/operators';
+
 /**
  * BizFx Action `Component`.
  */
 @Component({
   selector: 'sc-bizfx-action',
   templateUrl: './sc-bizfx-action.component.html',
-  styleUrls: ['./sc-bizfx-action.component.css']
+  styleUrls: ['./sc-bizfx-action.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class ScBizFxActionComponent implements OnInit, OnDestroy {
@@ -63,8 +64,7 @@ export class ScBizFxActionComponent implements OnInit, OnDestroy {
     public bizFxContext: ScBizFxContextService,
     private viewsService: ScBizFxViewsService,
     private dialogService: ScDialogService,
-    private router: Router,
-    private fb: FormBuilder) {
+    private router: Router) {
     this.actionForm = new FormGroup({});
   }
 
@@ -79,7 +79,7 @@ export class ScBizFxActionComponent implements OnInit, OnDestroy {
     this.getActionView();
 
     this.viewsService.actionErrorsAnnounced$
-      .takeWhile(() => this.alive)
+      .pipe(takeWhile(() => this.alive))
       .subscribe(errors => this.messages = errors);
   }
 
@@ -218,7 +218,7 @@ export class ScBizFxActionComponent implements OnInit, OnDestroy {
 
     if (this.view.UiHint === 'Grid') {
       const childrenGroups = new FormArray([]);
-      this.view.ChildViews.forEach((child, index) => childrenGroups.push(new FormGroup(this.buildGroup(child.Properties))));
+      this.view.ChildViews.forEach((child) => childrenGroups.push(new FormGroup(this.buildGroup(child.Properties))));
       group['Grid'] = childrenGroups;
     }
 

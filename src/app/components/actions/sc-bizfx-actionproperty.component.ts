@@ -64,7 +64,7 @@ export class ScBizFxActionPropertyComponent implements AfterViewInit {
   }
 
   /**
-     * Calls `Angular2Csv` to generate and donwload a csv file
+     * Calls `Angular2Csv` to generate and download a csv file
      */
   downloadCsv() {
     return new Angular2Csv(JSON.parse(this.property.Value), `${this.property.Name}`);
@@ -92,14 +92,14 @@ export class ScBizFxActionPropertyComponent implements AfterViewInit {
   /**
     * @ignore
     */
-   isRequired(): boolean {
+  isRequired(): boolean {
 	  return this.property.IsRequired;
   }
 
   /**
     * @ignore
     */
-   hasDescription(): boolean {
+  hasDescription(): boolean {
     let viewPolicy = this.property.Policies.find(p => p.PolicyId === 'Description');
     let hasDescription = viewPolicy && viewPolicy.Models.length === 1 && viewPolicy.Models[0].Name !== '';
     return hasDescription;
@@ -108,7 +108,7 @@ export class ScBizFxActionPropertyComponent implements AfterViewInit {
   /**
     * @ignore
     */
-   getDescription(): string {
+  getDescription(): string {
     let viewPolicy = this.property.Policies.find(p => p.PolicyId === 'Description');
     if (!viewPolicy || viewPolicy.Models.length !== 1) {
       return '';
@@ -116,5 +116,4 @@ export class ScBizFxActionPropertyComponent implements AfterViewInit {
 
     return viewPolicy.Models[0].Name;
   }
-
 }

@@ -8,7 +8,8 @@ Custom Sitecore Commerce BizFx project with extended functionality for the Busin
 - [Disclaimer](#disclaimer)
 
 ## Supported Sitecore Experience Commerce Versions
-- XC 9.2
+- [XC 9.2 (documentation here)](https://github.com/ajsuth/Ajsuth.BizFx/tree/release/9.2/master)
+- XC 9.3
 
 ## Features
 - [Custom Entity Links and Custom Item Links](#custom-entity-links-and-custom-item-links)
@@ -22,7 +23,7 @@ Custom Sitecore Commerce BizFx project with extended functionality for the Busin
 ### Custom Entity Links and Custom Item Links
 Custom entity and item links are more flexible than the standard entity and item links as they allow the configurations to be specified at the view property level with a fallback to the entity view values where values have not been specified. This allows entity views to contain multiple links under a single entity view that resolve to different routes.
 
-**Dependencies:** https://github.com/ajsuth/Ajsuth.Foundation.Views.Engine/tree/release/9.2/master
+**Dependencies:** [Ajsuth.Foundation.Views.Engine](https://github.com/ajsuth/Ajsuth.Foundation.Views.Engine/tree/release/9.3/master)
 
 #### Custom Entity Link
 
@@ -93,7 +94,7 @@ Links in BizFx may direct the user away from the current page, counter-intuitive
 
 For the '_blank' target type, the link is opened in a new window or tab and is rendered with a '^' to signify that the link will be opened externally.
 
-**Dependencies:** https://github.com/ajsuth/Ajsuth.Foundation.Views.Engine/tree/release/9.2/master
+**Dependencies:** [Ajsuth.Foundation.Views.Engine](https://github.com/ajsuth/Ajsuth.Foundation.Views.Engine/tree/release/9.3/master)
 
 ![Blank Target opens link in a new window or tab](./images/blank-target-link.png)
 
@@ -126,7 +127,7 @@ Supported Components:
 - Price Snapshot
 - Variant
 
-**Dependencies:** https://github.com/ajsuth/Ajsuth.Foundation.Views.Engine/tree/release/9.2/master
+**Dependencies:** [Ajsuth.Foundation.Views.Engine](https://github.com/ajsuth/Ajsuth.Foundation.Views.Engine/tree/release/9.3/master)
 
 ### Required Field Indicators For Data Entry Modals
 Improved UX for required fields, rendering a '*' after the field title for required view properties. Applies to modal entity views of UI Hint _Flat_ and _Grid_.
@@ -155,7 +156,7 @@ _Sample 'Grid' entity view with required field indicators for supported types._
 ### Description Tooltip for View Properties
 Improved UX for form input fields, rendering description tooltips on mouse hover to provide context and facilitate data entry for business users.
 
-**Dependencies:** https://github.com/ajsuth/Ajsuth.Foundation.Views.Engine/tree/release/9.2/master
+**Dependencies:** [Ajsuth.Foundation.Views.Engine](https://github.com/ajsuth/Ajsuth.Foundation.Views.Engine/tree/release/9.3/master)
 
 ![Description tooltip](./images/view-property-description-tooltip.png)
 

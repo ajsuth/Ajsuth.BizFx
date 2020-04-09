@@ -51,7 +51,7 @@ export class ScBizFxViewPropertyByTypeComponent implements OnInit {
   /**
     * @ignore
     */
-   isBlankTarget(): boolean {
+  isBlankTarget(): boolean {
     let viewPolicy = this.property.Policies.find(p => p.PolicyId === 'Target');
     return viewPolicy !== undefined
       && viewPolicy !== null

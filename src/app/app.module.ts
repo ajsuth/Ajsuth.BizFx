@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /* SPEAK */
@@ -20,7 +20,6 @@ import { ScTableModule } from '@speak/ng-bcl/table';
 import { CookieModule } from 'ngx-cookie';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgAutoCompleteModule } from 'ng-auto-complete';
 import { TagInputModule } from 'ngx-chips';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -63,23 +62,21 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-import { DecimalPipe, CurrencyPipe } from './pipes/number-pipe';
-import { DatePipe } from './pipes/date-pipe';
-import { registerLocaleData } from '@sitecore/bizfx';
+import { registerLocaleData } from '@angular/common';
 
 /* Locales */
-import localeFr from '../locales/fr';
-import localeFrExtra from '../locales/extra/fr';
-import localeJa from '../locales/ja';
-import localeJaExtra from '../locales/extra/ja';
-import localeDe from '../locales/de';
-import localeDeExtra from '../locales/extra/de';
-import localeEnAu from '../locales/en-AU';
-import localeEnAuExtra from '../locales/extra/en-AU';
+import localeFr from '@angular/common/locales/fr';
+import localeFrExtra from '@angular/common/locales/extra/fr';
+import localeJa from '@angular/common/locales/ja';
+import localeJaExtra from '@angular/common/locales/extra/ja';
+import localeDe from '@angular/common/locales/de';
+import localeDeExtra from '@angular/common/locales/extra/de';
+import localeEnAu from '@angular/common/locales/en-AU';
+import localeEnAuExtra from '@angular/common/locales/extra/en-AU';
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
-registerLocaleData(localeDe, 'de-DE', localeDeExtra);
 registerLocaleData(localeJa, 'Ja-JP', localeJaExtra);
+registerLocaleData(localeDe, 'de-DE', localeDeExtra);
 registerLocaleData(localeEnAu, 'en-AU', localeEnAuExtra);
 
 /**
@@ -92,9 +89,8 @@ registerLocaleData(localeEnAu, 'en-AU', localeEnAuExtra);
 
     CookieModule.forRoot(),
     CKEditorModule,
-    NgAutoCompleteModule,
     TagInputModule,
-    NgbModule.forRoot(),
+    NgbModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -139,11 +135,7 @@ registerLocaleData(localeEnAu, 'en-AU', localeEnAuExtra);
     ScBizFxAutocompleteComponent,
     ScBizFxBraintreeComponent,
     ScBizFxMediaPickerComponent,
-    ScBizFxViewComponent,
-
-    DecimalPipe,
-    CurrencyPipe,
-    DatePipe
+    ScBizFxViewComponent
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ScHttpXsrfInterceptor, multi: true}

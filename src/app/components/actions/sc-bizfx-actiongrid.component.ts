@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormArray, FormBuilder, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormArray, FormBuilder, FormControl, AbstractControl } from '@angular/forms';
 
 import { ScBizFxContextService, ScBizFxProperty, ScBizFxView, getPropertyValidators, deepClone } from '@sitecore/bizfx';
 
@@ -111,11 +111,10 @@ export class ScBizFxActionGridComponent implements OnInit {
         this.grid.removeAt(index);
     }
     
-  /**
-    * @ignore
-    */
-  isRequired(property: ScBizFxProperty): boolean {
-    return property.IsRequired;
-  }
-
+    /**
+      * @ignore
+      */
+    isRequired(property: ScBizFxProperty): boolean {
+      return property.IsRequired;
+    }
 }
