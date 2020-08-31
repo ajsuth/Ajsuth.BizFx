@@ -5,12 +5,12 @@
     <div [ngSwitch]="property.UiType">
 
       <div *ngSwitchCase="'Autocomplete'">
-        <label for="property-{{property.Name}}" [title]="hasDescription() ? getDescription() : ''">{{property.DisplayName}}{{isRequired() ? ' *' : ''}}</label>
+        <label for="property-{{property.Name}}" [title]="hasDescription() ? getDescription() : ''">{{property.DisplayName}}</label>
         <sc-bizfx-autocomplete [property]="property" [actionForm]="actionForm"></sc-bizfx-autocomplete>
       </div>
 
       <div *ngSwitchCase="'SelectList'" class="form-group">
-        <label for="property-{{property.Name}}" [title]="hasDescription() ? getDescription() : ''">{{property.DisplayName}}{{isRequired() ? ' *' : ''}}</label>
+        <label for="property-{{property.Name}}" [title]="hasDescription() ? getDescription() : ''">{{property.DisplayName}}</label>
         <select class="form-control" id="property-{{property.Name}}" [formControlName]="property.Name">
           <option *ngFor="let option of property.SelectList" [value]="option.Name">{{option.DisplayName}}</option>
         </select>
@@ -21,7 +21,7 @@
       </div>
 
       <div *ngSwitchCase="'MultiLine'" class="form-group">
-        <label for="property-{{property.Name}}" [title]="hasDescription() ? getDescription() : ''">{{property.DisplayName}}{{isRequired() ? ' *' : ''}}</label>
+        <label for="property-{{property.Name}}" [title]="hasDescription() ? getDescription() : ''">{{property.DisplayName}}</label>
         <textarea class="form-control" id="property-{{property.Name}}" [formControlName]="property.Name" [value]="property.Value"></textarea>
       </div>
 
@@ -59,7 +59,7 @@
           </div>
 
           <div *ngSwitchDefault class="form-group">
-            <label for="property-{{property.Name}}" [title]="hasDescription() ? getDescription() : ''">{{property.DisplayName}}{{isRequired() ? ' *' : ''}}</label>
+            <label for="property-{{property.Name}}" [title]="hasDescription() ? getDescription() : ''">{{property.DisplayName}}</label>
             <input class="form-control" id="property-{{property.Name}}" [formControlName]="property.Name" [value]="property.Value">
           </div>
         </div>

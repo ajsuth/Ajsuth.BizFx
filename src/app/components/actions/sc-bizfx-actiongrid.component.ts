@@ -52,6 +52,9 @@ export class ScBizFxActionGridComponent implements OnInit {
         if (this.view === undefined || !this.view.ChildViews || this.view.ChildViews.length === 0) { return; }
 
         this.headers = this.view.ChildViews[0].Properties.filter(p => !p.IsHidden);
+        this.headers.forEach(function(value) {
+            value.DisplayName += value.IsRequired ? ' *' : '';
+        });
         this.children = this.view.ChildViews;
 
         const propertyAllowAdd = this.view.Properties.filter(p => p.Name.toLowerCase() === 'allowadd')[0];
@@ -109,12 +112,5 @@ export class ScBizFxActionGridComponent implements OnInit {
 
         this.children.splice(index, 1);
         this.grid.removeAt(index);
-    }
-    
-    /**
-      * @ignore
-      */
-    isRequired(property: ScBizFxProperty): boolean {
-      return property.IsRequired;
     }
 }

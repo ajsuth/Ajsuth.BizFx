@@ -32,6 +32,13 @@ export class ScBizFxActionPropertyComponent implements AfterViewInit {
   /**
      * @ignore
      */
+    ngOnInit(): void {
+      this.property.DisplayName += this.property.IsRequired ? ' *' : '';
+    }
+  
+  /**
+     * @ignore
+     */
   ngAfterViewInit(): void {
     this.resetSelectedIndex();
   }
@@ -87,13 +94,6 @@ export class ScBizFxActionPropertyComponent implements AfterViewInit {
         selectEl.selectedIndex = -1;
       }
     }
-  }
-
-  /**
-    * @ignore
-    */
-  isRequired(): boolean {
-	  return this.property.IsRequired;
   }
 
   /**
