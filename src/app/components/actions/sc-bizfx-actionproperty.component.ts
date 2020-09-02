@@ -23,6 +23,10 @@ export class ScBizFxActionPropertyComponent implements AfterViewInit {
      * Defines the form group that maps to the action's view
      */
   @Input() actionForm: FormGroup;
+  /**
+   * @ignore
+   */
+  description: string;
 
   /**
      * @ignore
@@ -34,6 +38,11 @@ export class ScBizFxActionPropertyComponent implements AfterViewInit {
      */
     ngOnInit(): void {
       this.property.DisplayName += this.property.IsRequired ? ' *' : '';
+
+      let viewPolicy = this.property.Policies.find(p => p.PolicyId === 'Description');
+      if (viewPolicy && viewPolicy.Models.length > 0) {
+        this.description = viewPolicy.Models[0].Name;
+      }
     }
   
   /**
@@ -94,26 +103,5 @@ export class ScBizFxActionPropertyComponent implements AfterViewInit {
         selectEl.selectedIndex = -1;
       }
     }
-  }
-
-  /**
-    * @ignore
-    */
-  hasDescription(): boolean {
-    let viewPolicy = this.property.Policies.find(p => p.PolicyId === 'Description');
-    let hasDescription = viewPolicy && viewPolicy.Models.length === 1 && viewPolicy.Models[0].Name !== '';
-    return hasDescription;
-  }
-
-  /**
-    * @ignore
-    */
-  getDescription(): string {
-    let viewPolicy = this.property.Policies.find(p => p.PolicyId === 'Description');
-    if (!viewPolicy || viewPolicy.Models.length !== 1) {
-      return '';
-    }
-
-    return viewPolicy.Models[0].Name;
   }
 }

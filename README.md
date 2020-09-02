@@ -9,13 +9,13 @@ Custom Sitecore Commerce BizFx project with extended functionality for the Busin
 
 ## Supported Sitecore Experience Commerce Versions
 - [XC 9.2 (documentation here)](https://github.com/ajsuth/Ajsuth.BizFx/tree/release/9.2/master)
-- XC 9.3
+- [XC 9.3 (documentation here)](https://github.com/ajsuth/Ajsuth.BizFx/tree/release/9.3/master)
+- XC 10.0
 
 ## Features
 - [Custom Entity Links and Custom Item Links](#custom-entity-links-and-custom-item-links)
 - [UI Types Enabled in Flat Entity Views](#ui-types-enabled-in-flat-entity-views)
 - [Target Attribute Support for Hyperlink Values](#target-attribute-support-for-hyperlink-values)
-- [Automatic Page Redirect On Entity and Component Creation](#automatic-page-redirect-on-entity-and-component-creation)
 - [Required Field Indicators For Data Entry Modals](#required-field-indicators-for-data-entry-modals)
 - [Description Tooltip for View Properties](#description-tooltip-for-view-properties)
 - [Support for en-AU Locale](#support-for-en-au-locale)
