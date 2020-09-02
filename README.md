@@ -110,25 +110,6 @@ entityLinkViewProperty.SetTargetPolicy();
 itemLinkViewProperty.SetTargetPolicy(ViewsConstants.ViewProperty.Targets.Self);
 ```
 
-### Automatic Page Redirect On Entity and Component Creation
-When entities and components are created via BizFx, the user is automatically redirected to the entity view page for the newly create entity or component.
-
-Supported Entities:
-- Catalog
-- Category
-- Sellable Item
-- Inventory Set
-- Price Book
-- Price Card
-- Promotion Book
-- Promotion
-
-Supported Components:
-- Price Snapshot
-- Variant
-
-**Dependencies:** [Ajsuth.Foundation.Views.Engine](https://github.com/ajsuth/Ajsuth.Foundation.Views.Engine/tree/release/9.3/master)
-
 ### Required Field Indicators For Data Entry Modals
 Improved UX for required fields, rendering a '*' after the field title for required view properties. Applies to modal entity views of UI Hint _Flat_ and _Grid_.
 
