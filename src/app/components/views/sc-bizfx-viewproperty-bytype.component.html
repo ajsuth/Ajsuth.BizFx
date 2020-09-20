@@ -4,10 +4,10 @@
 
 <div [ngSwitch]="property.OriginalType">
   <div id="property-{{view.Name}}-{{property.Name}}" *ngSwitchCase="'System.DateTimeOffset'" class="property">
-    <div *ngIf="property.UiType === 'FullDateTime'">
+    <div *ngIf="property.UiType === 'FullDateTime' || property.UiType === 'ItemLink'">
         {{property.Value | date:'short':'':bizFxContext.language}}
     </div>
-    <div *ngIf="property.UiType !== 'FullDateTime'">
+    <div *ngIf="property.UiType !== 'FullDateTime' && property.UiType !== 'ItemLink'">
         {{property.Value | date:'shortDate':'':bizFxContext.language}}
     </div>
   </div>

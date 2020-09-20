@@ -19,6 +19,7 @@ Custom Sitecore Commerce BizFx project with extended functionality for the Busin
 - [Required Field Indicators For Data Entry Modals](#required-field-indicators-for-data-entry-modals)
 - [Description Tooltip for View Properties](#description-tooltip-for-view-properties)
 - [Support for en-AU Locale](#support-for-en-au-locale)
+- [Full Date Time rendered for Item Links](#full-date-time-rendered-for-item-links)
 
 ### Custom Entity Links and Custom Item Links
 Custom entity and item links are more flexible than the standard entity and item links as they allow the configurations to be specified at the view property level with a fallback to the entity view values where values have not been specified. This allows entity views to contain multiple links under a single entity view that resolve to different routes.
@@ -153,6 +154,13 @@ _The date format display for the default 'en' date locale._
 ![En US date format](./images/date-format-locale-en-au.png)
 
 _The date format display when locale is set to 'en-AU'._
+
+### Full Date Time rendered for Item Links
+Specifically to cater for the Price Snapshots, when the OriginalType of a view property is 'System.DateTimeOffset' and the UiType is 'ItemLink', the value is formatted as per the FullDateTime UiType.
+
+![Item Link renders as Date/Time](./images/item-link-render-as-date-time.png)
+
+_The item link is rendered in the date time format._
 
 ## Installation Instructions
 1. Download the repository.
