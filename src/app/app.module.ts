@@ -65,6 +65,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 import { registerLocaleData } from '@angular/common';
 
 /* Locales */
+import localeEn from '@angular/common/locales/en';
+import localeEnExtra from '@angular/common/locales/extra/en';
 import localeFr from '@angular/common/locales/fr';
 import localeFrExtra from '@angular/common/locales/extra/fr';
 import localeJa from '@angular/common/locales/ja';
@@ -74,8 +76,9 @@ import localeDeExtra from '@angular/common/locales/extra/de';
 import localeEnAu from '@angular/common/locales/en-AU';
 import localeEnAuExtra from '@angular/common/locales/extra/en-AU';
 
+registerLocaleData(localeEn, 'en', localeEnExtra);
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
-registerLocaleData(localeJa, 'Ja-JP', localeJaExtra);
+registerLocaleData(localeJa, 'ja-JP', localeJaExtra);
 registerLocaleData(localeDe, 'de-DE', localeDeExtra);
 registerLocaleData(localeEnAu, 'en-AU', localeEnAuExtra);
 
